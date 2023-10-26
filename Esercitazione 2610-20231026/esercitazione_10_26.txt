@@ -1,0 +1,68 @@
+-----------------------------------------------------------------------------
+CORREZIONE ESERCIZIO PER CASA
+-----------------------------------------------------------------------------
+
+1) Si consideri il linguaggio L delle stringhe su alfabeto {a,b,c} per cui 
+non vale che il numero delle "a", delle "b" e delle "c" e' lo stesso (vi sono
+almeno due tra "a", "b" e "c" per cui la quantita' delle une e' diversa dalla
+quantit‡ delle altre). Dire se il linguaggio L e', o meno, libero dal contesto
+e dimostrare la propria affermazione. Qual'e' il liguaggio complementare di L?
+
+2) Provare a sostituire, in SimpleExp.g4 e in SimpleCalcSTVisitor.java, 
+l'operatore "+" con l'operatore "-" (la grammatica ottenuta e' stata chiamata 
+SimpleExpMinus.g4) e confrontare il risultato ottenuto impostando 
+l'associativita' a destra con quella a sinistra.  
+ESEMPIO: 3-(4-2-7)*5
+
+-----------------------------------------------------------------------------
+REALIZZAZIONE DELLA STACK VIRTUAL MACHINE (SVM) E DEL RELATIVO ASSEMBLATORE
+-----------------------------------------------------------------------------
+
+Realizziamo una Stack Virtual Machine (SVM) e il relativo assemblatore.
+Esempio: compilazione ed esecuzione file sorgente quicksort.fool
+
+             compilazione                       assembly
+quicksort.fool --------> quicksort.fool.asm    ----------> codice oggetto 
+                         (assembler della SVM)                    |
+                                                                  |
+                                                                  V
+                                                           Stack Virtual Machine
+
+1) Creiamo un package "svm" in cui collocare i files iniziali forniti
+nella directory "svm" (copiandola in "src" diviene automaticamente un package).
+
+2) Creiamo l'assemblatore SVM in SVM.g4. 
+ANTLR consente l'utilizzo di grammatiche EBNF (Extended Backus-Naur Form), invece 
+di semplici CFG: per comodità, nei corpi delle produzioni di tali grammatiche si 
+possono utilizzare gli operatori delle espressioni regolari, es. stella di Kleene.
+
+3) Creiamo l'esecutore di codice oggetto SVM in ExecuteVM.java. 
+TestASM.java consente di assemblare ed eseguire un file ".asm"
+
+
+-----------------------------------------------------------------------------
+ESERCIZIO: 
+COMPLETARE IMPLEMENTAZIONE VIRTUAL MACHINE PER GRAMMATICA IN SVM.g4
+-----------------------------------------------------------------------------
+
+Completare l'implementazione della Virtual Machine considerando l'intera 
+grammatica SVM.g4 (terminando tutte le operazioni).
+
+Sono previsti i seguenti registri interni
+HP (heap pointer)
+FP (frame pointer)
+RA (return address)
+TM (temporary storage)
+da implementare come campi analogmente ai registri IP e SP.
+
+Inizialmente il registro FP deve avere lo stesso valore di SP mentre HP 
+deve essere inizializzato a 0.
+
+Come test, provare il file "quicksort.fool.asm" che deve stampare:
+1
+2
+2
+3
+4
+5
+
